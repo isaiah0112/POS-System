@@ -9,11 +9,8 @@ public class ClockGUI
 {
     JFrame clockWindow = new JFrame();
     JPanel itemPanel = new JPanel();
-    //JPanel buttonPanel = new JPanel();
-    //JPanel logPanel = new JPanel();
     JButton clockIn =  new JButton("Clock In");
     JButton clockOut = new JButton("Clock Out");
-    //JTextArea time = new JTextArea("This is th eCurrent time");
     JLabel timeIn = new JLabel("Time clocked in: ");
     JLabel timeOut = new JLabel("Time clocked out: ");
     JLabel inTime = new JLabel("");
@@ -24,22 +21,37 @@ public class ClockGUI
     String time;
     public ClockGUI()
     {
-        clockWindow.setSize(400, 500);
+        
         clockIn.setPreferredSize(new Dimension(200, 250));
         itemPanel.setLayout(new GridBagLayout());
 
+        timeIn.setPreferredSize(new Dimension(107, 62));
+        timeOut.setPreferredSize(new Dimension(107, 62));
+        inTime.setPreferredSize(new Dimension(107, 62));
+        outTime.setPreferredSize(new Dimension(107, 62));
         
         timeFormat = new SimpleDateFormat("hh:mm:ss a");
         timeLabel = new JLabel();
         
-        timeLabel.setPreferredSize(new Dimension(400, 250));
+        timeLabel.setPreferredSize(new Dimension(430, 250));
         timeLabel.setFont(new Font("Verdana", Font.PLAIN, 60));
         clockIn.setFont(new Font("Verdana", Font.PLAIN, 35));
 
         clockIn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-                inTime.setText(timeFormat.format(Calendar.getInstance().getTime()));
+                if(clockIn.getText() == "Clock In")
+                {
+                    clockIn.setText("Clock Out");
+                    inTime.setText(timeFormat.format(Calendar.getInstance().getTime()));
+                }
+                else if(clockIn.getText() == "Clock Out")
+                {
+                    clockIn.setText("Clock In");
+                    outTime.setText(timeFormat.format(Calendar.getInstance().getTime()));
+                }
+                    
+                
             }
         });
    
@@ -61,15 +73,16 @@ public class ClockGUI
         itemPanel.add(clockIn, whole);
 
         whole = new GridBagConstraints();
-        whole.fill = GridBagConstraints.HORIZONTAL;
+        whole.fill = GridBagConstraints.BOTH;
         whole.gridx = 1;
         whole.gridy = 1;
         whole.gridwidth = 1;
         whole.weightx = 1;
         whole.insets = new Insets(15, 15, 15, 15);
         itemPanel.add(timeIn, whole);
+
         whole = new GridBagConstraints();
-        whole.fill = GridBagConstraints.HORIZONTAL;
+        whole.fill = GridBagConstraints.BOTH;
         whole.gridx = 1;
         whole.gridy = 3;
         whole.gridwidth = 1;
@@ -78,7 +91,7 @@ public class ClockGUI
         itemPanel.add(timeOut, whole);
 
         whole = new GridBagConstraints();
-        whole.fill = GridBagConstraints.HORIZONTAL;
+        whole.fill = GridBagConstraints.BOTH;
         whole.gridx = 1;
         whole.gridy = 2;
         whole.gridwidth = 1;
@@ -87,7 +100,7 @@ public class ClockGUI
         itemPanel.add(inTime, whole);
 
         whole = new GridBagConstraints();
-        whole.fill = GridBagConstraints.HORIZONTAL;
+        whole.fill = GridBagConstraints.BOTH;
         whole.gridx = 1;
         whole.gridy = 4;
         whole.gridwidth = 1;
