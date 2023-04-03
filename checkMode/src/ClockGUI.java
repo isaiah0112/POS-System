@@ -113,19 +113,14 @@ public class ClockGUI
         clockWindow.setVisible(true);
         updateTime();
     }
-    public void updateTime()
-    {
-        while(true)
-        {
-            time = timeFormat.format(Calendar.getInstance().getTime());
-            timeLabel.setText(time);
-            try{
-                Thread.sleep(1000);
-            }catch(InterruptedException e)
-            {
-                e.printStackTrace();
+    public void updateTime() {
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                time = timeFormat.format(Calendar.getInstance().getTime());
+                timeLabel.setText(time);
             }
-        }
-        
+        });
+        timer.start();
     }
 }

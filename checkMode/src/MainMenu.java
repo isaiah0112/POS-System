@@ -4,13 +4,19 @@ import java.awt.event.*;
 import java.util.Arrays;
 import java.awt.Font.*;
 import java.awt.Color.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+// import java.text.SimpleDateFormat;
+// import java.util.Calendar;
 
 public class MainMenu {
     JFrame frame = new JFrame();
     JPanel north = new JPanel();
     JPanel center = new JPanel();
     JTextArea test = new JTextArea();
-    static JButton b, b1, b2,b3,b4,b5;
+    JButton b, b1, b2,b3,b4,b5;
     static JLabel l;
     static JFrame f;
 
@@ -49,8 +55,25 @@ public class MainMenu {
         // Adding panel to frame
        frame.add(p);
   
-        f.show();
+        //f.show();
         System.out.println();
+
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                frame.dispose();
+                ClockGUI gui = new ClockGUI();
+            }
+          });
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                frame.dispose();
+                Tables tables = new Tables();
+            }
+          });
         
     }
 }

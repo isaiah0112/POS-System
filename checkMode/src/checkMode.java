@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.util.Arrays;
 import java.awt.Font.*;
 import java.awt.Color.*;
-
 public class checkMode {
     JFrame frame = new JFrame();
     JPanel foodPanel = new JPanel();
