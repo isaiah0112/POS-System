@@ -2,13 +2,13 @@
 
 ### Description ###
 
-* Developers: Jacob Galvez, Rodrigo Hernandez, Isaiah Garcia, Jenna
+* Developers: Jacob Galvez, Rodrigo Hernandez, Isaiah Garcia, Jenna Kohlmeyer
 * What are you creating? A POS System for a restaurant.
 * Who is this program for: Business Managers, Servers, Workers.
 * Why are we doing this? To give people a simple POS system to be able to perform business calculations and transactions efficiently. 
 
 ### General Info ###
-![mimasbitcalc](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP98VuLq2AHwcI70GVYNwuS2tt-sqS8x0M6CfS4azFHQ&usqp=CAU&ec=48665699)
+![POS-System](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP98VuLq2AHwcI70GVYNwuS2tt-sqS8x0M6CfS4azFHQ&usqp=CAU&ec=48665699)
 
 ### Technologies ###
 
@@ -33,5 +33,5 @@ The project has had a great start, we are mostly working on front-end stuff righ
 * Created the Store Front Layout showing the user tables so that they may charge the tables for what they purchase.
 * URL: https://github.com/isaiah0112/POS-System/commit/a2f2d7b9ed197ad9fd5172ad70af7bc937a0bf9f
 * Connected GUI's all together for first demo
-* URL: https://github.com/isaiah0112/POS-System/commit/63219f6757a0ac6f2302d29c471943c52f68cb12
+* URL: https://g63219f6757a0ac6f2302d29c471943c52f68cb12ithub.com/isaiah0112/POS-System/commit/
 * Next Steps: Create a Manager Mode, and improve the check modes features
