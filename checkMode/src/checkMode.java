@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.awt.Font.*;
 import java.awt.Color.*;
 
-public class GUI {
+public class checkMode {
     JFrame frame = new JFrame();
     JPanel foodPanel = new JPanel();
     JPanel checkPanel = new JPanel();
@@ -15,7 +15,7 @@ public class GUI {
     double given = 0;
     boolean partialPay = false;
 
-    public GUI() {
+    public checkMode(int tableNumber) {
         // -----------------------    CREATE Each Button
         JButton mainMenuButton = new JButton("Main Menu");
         JButton closeCheckButton = new JButton("Close");
@@ -128,12 +128,13 @@ public class GUI {
         
         check.setFont(buttonFont);
 
-        //---------------------------- Setup GUI FRAME
+        //---------------------------- Setup checkMode FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("POS");
+        frame.setTitle("POS Table: " + tableNumber);
         frame.setLayout(new BorderLayout());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         frame.setVisible(true);
+        check.append("Table: " + tableNumber + "\n");
 
         //----------- Give Each Button Logic
         // ----------- Steak Button Backend
@@ -356,7 +357,7 @@ public class GUI {
           public void actionPerformed(ActionEvent e) {
             frame.setVisible(false);
             frame.dispose();
-            MainMenu mainMenu = new MainMenu();
+            Tables tables = new Tables();
             // frame.getContentPane().removeAll();
             // frame.setContentPane(foodPanel);
             // frame.revalidate();
@@ -544,6 +545,7 @@ public class GUI {
                     check.setText("");
                     changeFrame.dispose();
                     partialPay = false;
+                    frame.dispose();
                   }
                   else {
                     
