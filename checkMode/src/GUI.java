@@ -356,7 +356,7 @@ public class GUI {
           public void actionPerformed(ActionEvent e) {
             frame.setVisible(false);
             frame.dispose();
-            MainMenu mainMenu = new MainMenu();
+            Tables tables = new Tables();
             // frame.getContentPane().removeAll();
             // frame.setContentPane(foodPanel);
             // frame.revalidate();
