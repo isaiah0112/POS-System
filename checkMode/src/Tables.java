@@ -38,7 +38,7 @@ public class Tables {
         //centerPanel.setLayout(new GridLayout(1, 3, 50, 0));
         frame.add(bottomPanel);
 
-        // Design for GUI
+        // Design for checkMode
         frame.getContentPane().setBackground(Color.GRAY);
         topPanel.setBackground(Color.GRAY);
         centerPanel.setBackground(Color.GRAY);
@@ -110,7 +110,97 @@ public class Tables {
         table15Panel.add(table15);
         bottomPanel.add(table15);
 
-        
+        // Button Backend
+        table1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(1);
+            }
+          });
+        table2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(2);
+            }
+          });
+        table3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(3);
+            }
+          });
+        table4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(4);
+            }
+          });
+        table5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(5);
+            }
+          });
+        table6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(6);
+            }
+          });
+        table7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(7);
+            }
+          });
+        table8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(8);
+            }
+          });
+        table9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(9);
+            }
+          });
+        table10.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(10);
+            }
+          });
+        table11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(11);
+            }
+          });
+        table12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(12);
+            }
+          });
+        table13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(13);
+            }
+          });
+        table14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(14);
+            }
+          });
+        table15.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              checkMode checkMode = new checkMode(15);
+            }
+          });
 
 
     }
