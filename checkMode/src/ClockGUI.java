@@ -2,8 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 
 public class ClockGUI 
 {
@@ -15,10 +14,9 @@ public class ClockGUI
     JLabel timeOut = new JLabel("Time clocked out: ");
     JLabel inTime = new JLabel("");
     JLabel outTime = new JLabel("");
-    Calendar calendar;
-    SimpleDateFormat timeFormat;
-    JLabel timeLabel;
-    String time;
+    Time clock = new Time();
+    JLabel timeLabel = new JLabel();
+    JButton backHome = new JButton("Back");
     public ClockGUI()
     {
         
@@ -30,9 +28,6 @@ public class ClockGUI
         inTime.setPreferredSize(new Dimension(107, 62));
         outTime.setPreferredSize(new Dimension(107, 62));
         
-        timeFormat = new SimpleDateFormat("hh:mm:ss a");
-        timeLabel = new JLabel();
-        
         timeLabel.setPreferredSize(new Dimension(430, 250));
         timeLabel.setFont(new Font("Verdana", Font.PLAIN, 60));
         clockIn.setFont(new Font("Verdana", Font.PLAIN, 35));
@@ -43,15 +38,23 @@ public class ClockGUI
                 if(clockIn.getText() == "Clock In")
                 {
                     clockIn.setText("Clock Out");
-                    inTime.setText(timeFormat.format(Calendar.getInstance().getTime()));
+                    inTime.setText(clock.currentTime());
                 }
                 else if(clockIn.getText() == "Clock Out")
                 {
                     clockIn.setText("Clock In");
-                    outTime.setText(timeFormat.format(Calendar.getInstance().getTime()));
+                    outTime.setText(clock.currentTime());
                 }
                     
                 
+            }
+        });
+
+        backHome.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                MainMenu back = new MainMenu();
+                clockWindow.dispose();
             }
         });
    
@@ -62,6 +65,14 @@ public class ClockGUI
         whole.gridwidth = 3;
         whole.fill = GridBagConstraints.BOTH;
         itemPanel.add(timeLabel, whole);
+
+        whole = new GridBagConstraints();
+        whole.fill = GridBagConstraints.BOTH;
+        whole.gridx = 1;
+        whole.gridy = 5;
+        whole.weightx = 1.0;
+        whole.insets = new Insets(15,15,15,15);
+        itemPanel.add(backHome, whole);
 
         whole = new GridBagConstraints();
         whole.fill = GridBagConstraints.BOTH;
@@ -111,16 +122,7 @@ public class ClockGUI
         clockWindow.getContentPane().add(itemPanel);
         clockWindow.pack();
         clockWindow.setVisible(true);
-        updateTime();
+        clock.updateTime(timeLabel);
     }
-    public void updateTime() {
-        Timer timer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                time = timeFormat.format(Calendar.getInstance().getTime());
-                timeLabel.setText(time);
-            }
-        });
-        timer.start();
-    }
+    
 }
