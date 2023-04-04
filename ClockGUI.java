@@ -14,7 +14,7 @@ public class ClockGUI
     JLabel inTime = new JLabel("");
     JLabel outTime = new JLabel("");
     Time clock = new Time();
-    JLabel timeLabel;
+    JLabel timeLabel = new JLabel();
 
     public ClockGUI()
     {
@@ -26,7 +26,10 @@ public class ClockGUI
         timeOut.setPreferredSize(new Dimension(107, 62));
         inTime.setPreferredSize(new Dimension(107, 62));
         outTime.setPreferredSize(new Dimension(107, 62));
- 
+        
+
+        timeLabel.setPreferredSize(new Dimension(430, 250));
+        timeLabel.setFont(new Font("Verdana", Font.PLAIN, 60));
         clockIn.setFont(new Font("Verdana", Font.PLAIN, 35));
 
         clockIn.addActionListener(new ActionListener() {
