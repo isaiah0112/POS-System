@@ -15,6 +15,7 @@ public class ClockGUI
     JLabel outTime = new JLabel("");
     Time clock = new Time();
     JLabel timeLabel = new JLabel();
+    JButton backHome = new JButton("Back");
 
     public ClockGUI()
     {
@@ -49,6 +50,7 @@ public class ClockGUI
                 
             }
         });
+
    
         GridBagConstraints whole = new GridBagConstraints();
         whole.gridx = 0;
@@ -57,6 +59,14 @@ public class ClockGUI
         whole.gridwidth = 3;
         whole.fill = GridBagConstraints.BOTH;
         itemPanel.add(timeLabel, whole);
+
+        whole = new GridBagConstraints();
+        whole.fill = GridBagConstraints.BOTH;
+        whole.gridx = 1;
+        whole.gridy = 5;
+        whole.weightx = 1.0;
+        whole.insets = new Insets(15,15,15,15);
+        itemPanel.add(backHome, whole);
 
         whole = new GridBagConstraints();
         whole.fill = GridBagConstraints.BOTH;
