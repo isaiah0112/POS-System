@@ -35,3 +35,7 @@ The project has had a great start, we are mostly working on front-end stuff righ
 * Connected GUI's all together for first demo
 * URL: https://g63219f6757a0ac6f2302d29c471943c52f68cb12ithub.com/isaiah0112/POS-System/commit/
 * Next Steps: Create a Manager Mode, and improve the check modes features
+### Isaiah Garcia
+* Created the Clock In/Out mode so that employees can clock their time worked
+* URL:
+* Next Steps: Create mode to show current staff info
