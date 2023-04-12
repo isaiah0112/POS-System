@@ -13,6 +13,7 @@ public class checkMode {
     double total = 0;
     double given = 0;
     boolean partialPay = false;
+    checkLogic logic = new checkLogic();
 
     public checkMode(int tableNumber) {
         // -----------------------    CREATE Each Button
@@ -141,7 +142,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Chicken - $13.99\n");
-              total += 13.99;
+              total = logic.add(13.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -150,7 +151,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Steak - $18.99\n");
-              total += 18.99;
+              total = logic.add(18.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -159,7 +160,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Fish - $10.69\n");
-              total += 10.69;
+              total = logic.add(10.69, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -168,7 +169,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Rice - $2.99\n");
-              total += 2.99;
+              total = logic.add(2.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -177,7 +178,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Mashed Potatoes - $2.99\n");
-              total += 2.99;
+              total = logic.add(2.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -186,7 +187,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("fries- $2.99\n");
-              total += 2.99;
+              total = logic.add(2.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -195,7 +196,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Pizza - $12.99\n");
-              total += 12.99;
+              total = logic.add(12.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -204,7 +205,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Burger - $11.99\n");
-              total += 11.99;
+              total = logic.add(11.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -213,7 +214,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Hot Dog - $5.99\n");
-              total += 5.99;
+              total = logic.add(5.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -222,7 +223,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Salad - $5.99\n");
-              total += 5.99;
+              total = logic.add(5.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -231,7 +232,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("cake - $5.99\n");
-              total += 5.99;
+              total = logic.add(5.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -239,8 +240,8 @@ public class checkMode {
         milkshakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("milkshake - $8.99\n");
-              total += 8.99;
+              check.append("milkshake - $5.99\n");
+              total = logic.add(5.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -249,7 +250,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Soup - $5.99\n");
-              total += 5.99;
+              total = logic.add(5.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -257,8 +258,8 @@ public class checkMode {
         slushyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("slushy - $10.99\n");
-              total += 10.99;
+              check.append("slushy - $5.99\n");
+              total = logic.add(5.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -267,7 +268,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Fountain Drink - $3.99\n");
-              total += 3.99;
+              total = logic.add(3.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -276,7 +277,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Sweet Tea - $3.99\n");
-              total += 3.99;
+              total = logic.add(3.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -285,7 +286,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Lemonade - $3.99\n");
-              total += 3.99;
+              total = logic.add(3.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -294,7 +295,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Iced Tea - $3.99\n");
-              total += 3.99;
+              total = logic.add(3.99, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -303,6 +304,7 @@ public class checkMode {
             @Override
             public void actionPerformed(ActionEvent e) {
               check.append("Water - $0.00\n");
+              total = logic.add(0.00, total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -543,7 +545,7 @@ public class checkMode {
                     total = 0;
                     check.setText("");
                     changeFrame.dispose();
-                    partialPay = false;
+                    logic.partialPayFalse();
                     frame.dispose();
                   }
                   else {
@@ -553,7 +555,7 @@ public class checkMode {
                     totalText.setText("NEW TOTAL: " + String.format("%.2f", total));
                     given = 0;
                     closeWindow.setVisible(false);
-                    partialPay = true;
+                    logic.partialPayTrue();
                   }
                   
                 }
