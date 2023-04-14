@@ -13,36 +13,37 @@ public class checkMode {
     double total = 0;
     double given = 0;
     boolean partialPay = false;
+    JButton mainMenuButton = new JButton("Store Front");
+    JButton closeCheckButton = new JButton("Close");
+    JButton splitCheckButton = new JButton("Split");
+    JButton editButtons = new JButton("Edit Buttons");
+    JButton chickenButton = new JButton("BBQ Grilled Chicken");
+    JButton steakButton = new JButton("8 oz. Sirloin Steak");
+    JButton fishButton = new JButton("Fried Fish");
+    JButton riceButton = new JButton("Rice Pilaf");
+    JButton mashButton = new JButton("Mashed Potatoes");
+    JButton friesButton = new JButton("French Fries");
+    JButton pizzaButton = new JButton("Pizza");
+    JButton burgerButton = new JButton("Burger");
+    JButton sandwichButton = new JButton("Turkey Sandwich");
+    JButton saladButton = new JButton("Salad");
+    JButton cakeButton = new JButton("Fudge Cake Sundae");
+    JButton milkshakeButton = new JButton("Milkshake");
+    JButton soupButton = new JButton("Soup");
+    JButton slushyButton = new JButton("Slushy");
+    JButton iceCreamButton = new JButton("Ice Cream");
+
+    JButton fountainDrinkButton = new JButton("Fountain Drink");
+    JButton sweetTeaButton = new JButton("Sweet Tea");
+    JButton lemonadeButton = new JButton("Lemonade");
+    JButton icedTeaButton = new JButton("Iced Tea");
+    JButton waterButton = new JButton("Water");
     checkLogic logic = new checkLogic();
 
-    public checkMode(int tableNumber) {
+    public checkMode() {
         // -----------------------    CREATE Each Button
-        JButton mainMenuButton = new JButton("Main Menu");
-        JButton closeCheckButton = new JButton("Close");
-        JButton splitCheckButton = new JButton("Split");
-        JButton editButtons = new JButton("Edit Buttons");
-        JButton chickenButton = new JButton("BBQ Grilled Chicken");
-        JButton steakButton = new JButton("8 oz. Sirloin Steak");
-        JButton fishButton = new JButton("Fried Fish");
-        JButton riceButton = new JButton("Rice Pilaf");
-        JButton mashButton = new JButton("Mashed Potatoes");
-        JButton friesButton = new JButton("French Fries");
-        JButton pizzaButton = new JButton("Pizza");
-        JButton burgerButton = new JButton("Burger");
-        JButton sandwichButton = new JButton("Turkey Sandwich");
-        JButton saladButton = new JButton("Salad");
-        JButton cakeButton = new JButton("Fudge Cake Sundae");
-        JButton milkshakeButton = new JButton("Milkshake");
-        JButton soupButton = new JButton("Soup");
-        JButton slushyButton = new JButton("Slushy");
-        JButton iceCreamButton = new JButton("Ice Cream");
-
-        JButton fountainDrinkButton = new JButton("Fountain Drink");
-        JButton sweetTeaButton = new JButton("Sweet Tea");
-        JButton lemonadeButton = new JButton("Lemonade");
-        JButton icedTeaButton = new JButton("Iced Tea");
-        JButton waterButton = new JButton("Water");
-
+        
+        
         //------------------------------Design each Button
         Font buttonFont = new Font("Arial", Font.BOLD, 16);
 
@@ -130,11 +131,11 @@ public class checkMode {
 
         //---------------------------- Setup checkMode FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("POS Table: " + tableNumber);
+        frame.setTitle("POS Table: ");
         frame.setLayout(new BorderLayout());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         frame.setVisible(true);
-        check.append("Table: " + tableNumber + "\n");
+        check.append("Table: " + "\n");
 
         //----------- Give Each Button Logic
         // ----------- Steak Button Backend
@@ -546,6 +547,7 @@ public class checkMode {
                     check.setText("");
                     changeFrame.dispose();
                     logic.partialPayFalse();
+                    partialPay = false;
                     frame.dispose();
                   }
                   else {
@@ -556,6 +558,7 @@ public class checkMode {
                     given = 0;
                     closeWindow.setVisible(false);
                     logic.partialPayTrue();
+                    partialPay = true;
                   }
                   
                 }
@@ -638,7 +641,6 @@ public class checkMode {
 
         bottomToolbar.add(toolbarCenter, BorderLayout.CENTER);
         bottomToolbar.add(toolbarWest, BorderLayout.WEST);
-
 
 
         frame.add(foodPanel, BorderLayout.CENTER);

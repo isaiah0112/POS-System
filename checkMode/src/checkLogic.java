@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.awt.Font.*;
 import java.awt.Color.*;
 
-public class checkLogic {
+public class checkLogic{
 
     public double add (double temp, double total)
     {
@@ -24,4 +24,7 @@ public class checkLogic {
         return false;
     }
     
+    public void addTest (JButton test) {
+        test = new JButton("poop");
+    }
 }
