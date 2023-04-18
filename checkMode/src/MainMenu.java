@@ -56,7 +56,7 @@ public class MainMenu {
        frame.add(p);
   
         //f.show();
-        System.out.println();
+        //System.out.println();
 
         b2.addActionListener(new ActionListener() {
             @Override
@@ -72,6 +72,14 @@ public class MainMenu {
                 frame.setVisible(false);
                 frame.dispose();
                 Tables tables = new Tables();
+            }
+          });
+          b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                frame.dispose();
+                EmpListGUI list = new EmpListGUI();
             }
           });
         
