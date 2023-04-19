@@ -390,7 +390,6 @@ public class checkMode {
           public void actionPerformed(ActionEvent e) {
             frame.setVisible(false);
             frame.dispose();
-            Tables tables = new Tables();
             // frame.getContentPane().removeAll();
             // frame.setContentPane(foodPanel);
             // frame.revalidate();
