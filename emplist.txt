@@ -2,7 +2,3 @@
 201,Pizza Hut,24,9,0,
 202,Little Ceasars,13,2,0,
 203,Papa Johns,4.7,4,1,
-203,Papa Johns,4.7,4,1,
-203,Papa Johns,4.7,4,1,
-203,Papa Johns,4.7,4,1,
-203,Papa Johns,4.7,4,1,
