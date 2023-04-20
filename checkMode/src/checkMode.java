@@ -4,44 +4,68 @@ import java.awt.event.*;
 import java.util.Arrays;
 import java.awt.Font.*;
 import java.awt.Color.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class checkMode {
     JFrame frame = new JFrame();
-    JPanel foodPanel = new JPanel();
-    JPanel checkPanel = new JPanel();
-    JPanel bottomToolbar = new JPanel();
-    JTextArea check = new JTextArea(50,30);
     double total = 0;
     double given = 0;
     boolean partialPay = false;
+    String[] itemName = new String[20];
+    double[] itemPrice = new double[20];
+    
+    public checkMode() {
 
-    public checkMode(int tableNumber) {
+        
         // -----------------------    CREATE Each Button
-        JButton mainMenuButton = new JButton("Main Menu");
+        File file = new File("D:/Git/POS-System/checkMode/src/menu.txt");
+        Scanner sc;
+        try {
+          sc = new Scanner(file);
+          for (int i = 0; i < 20; i++) {
+            itemName[i] = sc.nextLine();
+            itemPrice[i] = Double.valueOf(sc.nextLine());
+            System.out.println(i + itemName[i] + " " + itemPrice[i]);
+          }
+             
+        } catch (FileNotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+    
+        JPanel foodPanel = new JPanel();
+        JPanel checkPanel = new JPanel();
+        JPanel bottomToolbar = new JPanel();
+        JTextArea check = new JTextArea(50,30);
+        JButton mainMenuButton = new JButton("Store Front");
         JButton closeCheckButton = new JButton("Close");
         JButton splitCheckButton = new JButton("Split");
         JButton editButtons = new JButton("Edit Buttons");
-        JButton chickenButton = new JButton("BBQ Grilled Chicken");
-        JButton steakButton = new JButton("8 oz. Sirloin Steak");
-        JButton fishButton = new JButton("Fried Fish");
-        JButton riceButton = new JButton("Rice Pilaf");
-        JButton mashButton = new JButton("Mashed Potatoes");
-        JButton friesButton = new JButton("French Fries");
-        JButton pizzaButton = new JButton("Pizza");
-        JButton burgerButton = new JButton("Burger");
-        JButton sandwichButton = new JButton("Turkey Sandwich");
-        JButton saladButton = new JButton("Salad");
-        JButton cakeButton = new JButton("Fudge Cake Sundae");
-        JButton milkshakeButton = new JButton("Milkshake");
-        JButton soupButton = new JButton("Soup");
-        JButton slushyButton = new JButton("Slushy");
-        JButton iceCreamButton = new JButton("Ice Cream");
+        JButton chickenButton = new JButton(itemName[6]);
+        JButton steakButton = new JButton(itemName[5]);
+        JButton fishButton = new JButton(itemName[7]);
+        JButton riceButton = new JButton(itemName[8]);
+        JButton mashButton = new JButton(itemName[9]);
+        JButton friesButton = new JButton(itemName[13]);
+        JButton pizzaButton = new JButton(itemName[10]);
+        JButton burgerButton = new JButton(itemName[11]);
+        JButton sandwichButton = new JButton(itemName[12]);
+        JButton saladButton = new JButton(itemName[14]);
+        JButton cakeButton = new JButton(itemName[15]);
+        JButton milkshakeButton = new JButton(itemName[16]);
+        JButton soupButton = new JButton(itemName[19]);
+        JButton slushyButton = new JButton(itemName[17]);
+        JButton iceCreamButton = new JButton(itemName[18]);
 
-        JButton fountainDrinkButton = new JButton("Fountain Drink");
-        JButton sweetTeaButton = new JButton("Sweet Tea");
-        JButton lemonadeButton = new JButton("Lemonade");
-        JButton icedTeaButton = new JButton("Iced Tea");
-        JButton waterButton = new JButton("Water");
-
+        JButton fountainDrinkButton = new JButton(itemName[0]);
+        JButton sweetTeaButton = new JButton(itemName[1]);
+        JButton lemonadeButton = new JButton(itemName[2]);
+        JButton icedTeaButton = new JButton(itemName[3]);
+        JButton waterButton = new JButton(itemName[4]);
+        checkLogic logic = new checkLogic();
+        
         //------------------------------Design each Button
         Font buttonFont = new Font("Arial", Font.BOLD, 16);
 
@@ -129,19 +153,19 @@ public class checkMode {
 
         //---------------------------- Setup checkMode FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("POS Table: " + tableNumber);
+        frame.setTitle("POS Table: ");
         frame.setLayout(new BorderLayout());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         frame.setVisible(true);
-        check.append("Table: " + tableNumber + "\n");
+        check.append("Table: " + "\n");
 
         //----------- Give Each Button Logic
         // ----------- Steak Button Backend
         chickenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Chicken - $13.99\n");
-              total += 13.99;
+              check.append(itemName[6] + " - " +itemPrice[6] + "\n");
+              total = logic.add(itemPrice[6], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -149,8 +173,8 @@ public class checkMode {
         steakButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Steak - $18.99\n");
-              total += 18.99;
+              check.append(itemName[5] + " - " + itemPrice[5] + "\n");
+              total = logic.add(itemPrice[5], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -158,8 +182,8 @@ public class checkMode {
         fishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Fish - $10.69\n");
-              total += 10.69;
+              check.append(itemName[7] + " - " + itemPrice[7] + "\n");
+              total = logic.add(itemPrice[7], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -167,8 +191,8 @@ public class checkMode {
         riceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Rice - $2.99\n");
-              total += 2.99;
+              check.append(itemName[8] + " - " + itemPrice[8] + "\n");
+              total = logic.add(itemPrice[8], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -176,8 +200,8 @@ public class checkMode {
         mashButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Mashed Potatoes - $2.99\n");
-              total += 2.99;
+              check.append(itemName[9] + " - " + itemPrice[9] + "\n");
+              total = logic.add(itemPrice[9], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -185,8 +209,8 @@ public class checkMode {
         friesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("fries- $2.99\n");
-              total += 2.99;
+              check.append(itemName[13] + " - " + itemPrice[13] + "\n");
+              total = logic.add(itemPrice[13], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -194,8 +218,8 @@ public class checkMode {
         pizzaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Pizza - $12.99\n");
-              total += 12.99;
+              check.append(itemName[10] + " - " + itemPrice[10] + "\n");
+              total = logic.add(itemPrice[10], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -203,8 +227,8 @@ public class checkMode {
         burgerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Burger - $11.99\n");
-              total += 11.99;
+              check.append(itemName[11] + " - " + itemPrice[11] + "\n");
+              total = logic.add(itemPrice[11], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -212,8 +236,8 @@ public class checkMode {
         sandwichButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Hot Dog - $5.99\n");
-              total += 5.99;
+              check.append(itemName[12] + " - " + itemPrice[12] + "\n");
+              total = logic.add(itemPrice[12], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -221,8 +245,8 @@ public class checkMode {
         saladButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Salad - $5.99\n");
-              total += 5.99;
+              check.append(itemName[14] + " - " + itemPrice[14] + "\n");
+              total = logic.add(itemPrice[14], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -230,8 +254,8 @@ public class checkMode {
         cakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("cake - $5.99\n");
-              total += 5.99;
+              check.append(itemName[15] + " - " + itemPrice[15] + "\n");
+              total = logic.add(itemPrice[15], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -239,8 +263,8 @@ public class checkMode {
         milkshakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("milkshake - $8.99\n");
-              total += 8.99;
+              check.append(itemName[16] + " - " + itemPrice[16] + "\n");
+              total = logic.add(itemPrice[16], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -248,8 +272,8 @@ public class checkMode {
         soupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Soup - $5.99\n");
-              total += 5.99;
+              check.append(itemName[19] + " - " + itemPrice[19] + "\n");
+              total = logic.add(itemPrice[19], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -257,17 +281,26 @@ public class checkMode {
         slushyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("slushy - $10.99\n");
-              total += 10.99;
+              check.append(itemName[17] + " - " + itemPrice[17] + "\n");
+              total = logic.add(itemPrice[17], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
+          // ----------- Ice Cream Button Backend
+        iceCreamButton.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            check.append(itemName[18] + " - " + itemPrice[19] + "\n");
+            total = logic.add(itemPrice[18], total);
+            System.out.println("Total is " + String.format("%.2f", total));
+          }
+        });
           // ------------- Fountain Drink Button Backend
         fountainDrinkButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Fountain Drink - $3.99\n");
-              total += 3.99;
+              check.append(itemName[0] + " - " + itemPrice[0] + "\n");
+              total = logic.add(itemPrice[0], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -275,8 +308,8 @@ public class checkMode {
         sweetTeaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Sweet Tea - $3.99\n");
-              total += 3.99;
+              check.append(itemName[1] + " - " + itemPrice[1] + "\n");
+              total = logic.add(itemPrice[1], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -284,8 +317,8 @@ public class checkMode {
         lemonadeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Lemonade - $3.99\n");
-              total += 3.99;
+              check.append(itemName[2] + " - " + itemPrice[2] + "\n");
+              total = logic.add(itemPrice[2], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -293,8 +326,8 @@ public class checkMode {
         icedTeaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Iced Tea - $3.99\n");
-              total += 3.99;
+              check.append(itemName[3] + " - " + itemPrice[3] + "\n");
+              total = logic.add(itemPrice[3], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -302,7 +335,8 @@ public class checkMode {
         waterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              check.append("Water - $0.00\n");
+              check.append(itemName[4] + " - " + itemPrice[4] + "\n");
+              total = logic.add(itemPrice[4], total);
               System.out.println("Total is " + String.format("%.2f", total));
             }
           });
@@ -356,7 +390,6 @@ public class checkMode {
           public void actionPerformed(ActionEvent e) {
             frame.setVisible(false);
             frame.dispose();
-            Tables tables = new Tables();
             // frame.getContentPane().removeAll();
             // frame.setContentPane(foodPanel);
             // frame.revalidate();
@@ -543,6 +576,7 @@ public class checkMode {
                     total = 0;
                     check.setText("");
                     changeFrame.dispose();
+                    logic.partialPayFalse();
                     partialPay = false;
                     frame.dispose();
                   }
@@ -553,6 +587,7 @@ public class checkMode {
                     totalText.setText("NEW TOTAL: " + String.format("%.2f", total));
                     given = 0;
                     closeWindow.setVisible(false);
+                    logic.partialPayTrue();
                     partialPay = true;
                   }
                   
@@ -636,7 +671,6 @@ public class checkMode {
 
         bottomToolbar.add(toolbarCenter, BorderLayout.CENTER);
         bottomToolbar.add(toolbarWest, BorderLayout.WEST);
-
 
 
         frame.add(foodPanel, BorderLayout.CENTER);

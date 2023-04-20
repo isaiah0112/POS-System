@@ -1,15 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
-import java.awt.Font.*;
-import java.awt.Color.*;
 
-public class Tables {
+public class Tables{
     JFrame frame = new JFrame();
     JPanel topPanel = new JPanel();
     JPanel centerPanel = new JPanel();
     JPanel bottomPanel = new JPanel();
+    JPanel bottomToolbar = new JPanel();
     JButton table1 = new JButton("Table 1");
     JButton table2 = new JButton("Table 2");
     JButton table3 = new JButton("Table 3");
@@ -25,24 +23,27 @@ public class Tables {
     JButton table13 = new JButton("Table 13");
     JButton table14 = new JButton("Table 14");
     JButton table15 = new JButton("Table 15");
+    JButton mainMenu = new JButton("Main Menu");
 
     
 
     public Tables() {
         frame.setTitle("Store Front");
-        frame.setLayout(new GridLayout(3, 1, 0, 100));
+        frame.setLayout(new GridLayout(4, 1, 0, 100));
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         frame.setVisible(true);
         frame.add(topPanel);
         frame.add(centerPanel);
         //centerPanel.setLayout(new GridLayout(1, 3, 50, 0));
         frame.add(bottomPanel);
+        frame.add(bottomToolbar);
 
         // Design for checkMode
         frame.getContentPane().setBackground(Color.GRAY);
         topPanel.setBackground(Color.GRAY);
         centerPanel.setBackground(Color.GRAY);
         bottomPanel.setBackground(Color.GRAY);
+        bottomToolbar.setBackground(Color.GRAY);
 
         topPanel.setLayout(new GridLayout(1,7, 50, 0));
         topPanel.add(table1);
@@ -110,97 +111,111 @@ public class Tables {
         table15Panel.add(table15);
         bottomPanel.add(table15);
 
+        
+        bottomToolbar.setLayout(new GridBagLayout());
+        //bottomToolbar.setPreferredSize(new Dimension(300 , 50));
+        mainMenu.setPreferredSize(new Dimension(300 , 50));
+        bottomToolbar.add(mainMenu);
+
         // Button Backend
         table1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(1);
+              checkMode checkMode = new checkMode();
             }
           });
         table2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(2);
+              checkMode checkMode = new checkMode();
             }
           });
         table3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(3);
+              checkMode checkMode = new checkMode();
             }
           });
         table4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(4);
+              checkMode checkMode = new checkMode();
             }
           });
         table5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(5);
+              checkMode checkMode = new checkMode();
             }
           });
         table6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(6);
+              checkMode checkMode = new checkMode();
             }
           });
         table7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(7);
+              checkMode checkMode = new checkMode();
             }
           });
         table8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(8);
+              checkMode checkMode = new checkMode();
             }
           });
         table9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(9);
+              checkMode checkMode = new checkMode();
             }
           });
         table10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(10);
+              checkMode checkMode = new checkMode();
             }
           });
         table11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(11);
+              checkMode checkMode = new checkMode();
             }
           });
         table12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(12);
+              checkMode checkMode = new checkMode();
             }
           });
         table13.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(13);
+              checkMode checkMode = new checkMode();
             }
           });
         table14.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(14);
+              checkMode checkMode = new checkMode();
             }
           });
         table15.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              checkMode checkMode = new checkMode(15);
+              checkMode checkMode = new checkMode();
             }
           });
+
+        mainMenu.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            new MainMenu();
+          }
+        });
 
 
     }
