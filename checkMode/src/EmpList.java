@@ -31,8 +31,6 @@ public class EmpList
         } catch (Exception e){
             System.err.println("Error: " + e.getMessage());
         }
-        Employee j = new Employee(203,"Papa Johns", 4, 4.7, 1);
-        addEmployee(j);
         
     }
     public void addEmployee(Employee emp)
