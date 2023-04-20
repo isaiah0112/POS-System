@@ -4,14 +4,15 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 class EmpListGUI 
 {
     JFrame empWindow = new JFrame();
     JPanel itemPanel = new JPanel();
     JLabel header = new JLabel("Working Employees");
-    Employee john = new Employee("Long John Silvers", 5, 20, 0);
-    Employee hut = new Employee("Pizza Hut", 3, 10,0);
-    Employee burg = new Employee("What A. Burger", 34, 35.5, 0);
+    //Employee john = new Employee(200,"Long John Silvers", 5, 20, 0);
+    //Employee hut = new Employee(201,"Pizza Hut", 3, 10,0);
+    //Employee burg = new Employee(202,"What A. Burger", 34, 35.5, 0);
     int location = 2;
     JButton backHome = new JButton("Back");
     public EmpListGUI()
@@ -36,8 +37,15 @@ class EmpListGUI
         emp.weightx = 1;
         emp.insets = new Insets(15, 15, 15, 15);
         itemPanel.add(header, emp);
-        addEmployee(john);
-        addEmployee(burg);
+        
+        EmpList l = new EmpList();
+        Map<String,Employee> empList = l.getMap();
+        for(Map.Entry<String,Employee> entry : empList.entrySet())
+        {
+            Employee temp = entry.getValue();
+            addEmployee(temp);
+        }
+
         emp = new GridBagConstraints();
         emp.fill = GridBagConstraints.HORIZONTAL;
         emp.gridx = 1;

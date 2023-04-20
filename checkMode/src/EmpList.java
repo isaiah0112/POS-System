@@ -22,7 +22,7 @@ public class EmpList
                 sales = s.nextInt();
                 table = s.nextInt();
 
-                Employee person = new Employee(n, sales, hours, table);
+                Employee person = new Employee(id,n, sales, hours, table);
                 list.put(String.valueOf(id),person);
                 s.nextLine();
             }
@@ -31,6 +31,24 @@ public class EmpList
         } catch (Exception e){
             System.err.println("Error: " + e.getMessage());
         }
+        Employee j = new Employee(203,"Papa Johns", 4, 4.7, 1);
+        addEmployee(j);
         
+    }
+    public void addEmployee(Employee emp)
+    {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt",true));
+            bw.newLine();
+            bw.write(emp.id +","+emp.name+","+emp.weeklyHours+","+emp.totalSales+","+emp.currentTable+",");
+            bw.close();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+    public Map<String, Employee> getMap()
+    {
+        return list;
     }
 }

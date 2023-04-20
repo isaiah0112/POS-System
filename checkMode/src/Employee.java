@@ -1,11 +1,13 @@
 class Employee
 {
+    int id;
     String name;
     int totalSales = 0;
     double weeklyHours = 0;
     int currentTable = 0;
-    public Employee(String emp, int sales, double hours, int table)
+    public Employee(int i,String emp, int sales, double hours, int table)
     {
+        id = i;
         name = emp;
         totalSales = sales;
         weeklyHours = hours;
@@ -13,15 +15,15 @@ class Employee
     }
     public void updateSales(int sales)
     {
-        totalSales = totalSales + sales;
+        this.totalSales = totalSales + sales;
     }
     public void updateHours(double hours)
     {
-        weeklyHours = weeklyHours + hours;
+        this.weeklyHours = weeklyHours + hours;
     }
     public void setTable(int table)
     {
-        currentTable = table;
+        this.currentTable = table;
     }
     public String getInfo()
     {
