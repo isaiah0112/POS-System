@@ -4,18 +4,19 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-public class EmpListGUI 
+class EmpListGUI 
 {
     JFrame empWindow = new JFrame();
     JPanel itemPanel = new JPanel();
     JLabel header = new JLabel("Working Employees");
-    Employee john = new Employee("Long John Silvers", 5, 20);
-    Employee hut = new Employee("Pizza Hut", 3, 10);
-    Employee burg = new Employee("What A. Burger", 34, 35.5);
+    Employee john = new Employee("Long John Silvers", 5, 20, 0);
+    Employee hut = new Employee("Pizza Hut", 3, 10,0);
+    Employee burg = new Employee("What A. Burger", 34, 35.5, 0);
     int location = 2;
     JButton backHome = new JButton("Back");
     public EmpListGUI()
     {
+        EmpList list = new EmpList();
         itemPanel.setLayout(new GridBagLayout());
         empWindow.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         itemPanel.setBorder(new EmptyBorder(25, 5, 5, 5));

@@ -1,0 +1,3 @@
+200,Long John Silvers,30,45,0,
+201,Pizza Hut,24,9,0,
+202,Little Ceasars,13,2,0,

@@ -4,11 +4,12 @@ class Employee
     int totalSales = 0;
     double weeklyHours = 0;
     int currentTable = 0;
-    public Employee(String emp, int sales, double hours)
+    public Employee(String emp, int sales, double hours, int table)
     {
         name = emp;
         totalSales = sales;
         weeklyHours = hours;
+        currentTable = table;
     }
     public void updateSales(int sales)
     {
