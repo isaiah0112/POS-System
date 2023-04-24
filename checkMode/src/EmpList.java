@@ -45,6 +45,63 @@ public class EmpList
             // TODO: handle exception
         }
     }
+    public Employee getEmployee(String emp)
+    {
+        try {
+            System.out.println(new File("emplist.txt").getAbsolutePath());
+            BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt"), 16*1024);
+            Scanner s = new Scanner(in);
+            s.useDelimiter(",");
+            while(s.hasNext())
+            {
+                id = s.nextInt();
+                n = s.next();
+                hours = s.nextDouble();
+                sales = s.nextInt();
+                table = s.nextInt();
+                if(n == emp)
+                {
+                    Employee person = new Employee(id,n, sales, hours, table);
+                    return person;
+                }
+                s.nextLine();
+            }
+            s.close();
+            System.out.println("done");
+        } catch (Exception e){
+            System.err.println("Error: " + e.getMessage());
+        }
+        Employee not = new Employee(0, "Employee does not exist", 0, 0, 0);
+        return not;
+    }
+    public boolean employeeExists(String emp)
+    {
+        try {
+            System.out.println(new File("emplist.txt").getAbsolutePath());
+            BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt"), 16*1024);
+            Scanner s = new Scanner(in);
+            s.useDelimiter(",");
+            while(s.hasNext())
+            {
+                id = s.nextInt();
+                n = s.next();
+                hours = s.nextDouble();
+                sales = s.nextInt();
+                table = s.nextInt();
+                if(n == emp)
+                {
+                    return true;
+                }
+                s.nextLine();
+            }
+            s.close();
+            System.out.println("done");
+        } catch (Exception e){
+            System.err.println("Error: " + e.getMessage());
+        }
+        Employee not = new Employee(0, "Employee does not exist", 0, 0, 0);
+        return false;
+    }
     public Map<String, Employee> getMap()
     {
         return list;
