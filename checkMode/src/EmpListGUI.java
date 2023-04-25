@@ -25,7 +25,6 @@ class EmpListGUI
         backHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-                MainMenu back = new MainMenu();
                 empWindow.dispose();
             }
         });

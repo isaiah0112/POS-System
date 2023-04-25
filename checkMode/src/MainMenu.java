@@ -127,8 +127,6 @@ public class MainMenu {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                frame.dispose();
                 ClockGUI gui = new ClockGUI();
             }
           });

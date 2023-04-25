@@ -24,6 +24,8 @@ public class Tables{
     JButton table14 = new JButton("Table 14");
     JButton table15 = new JButton("Table 15");
     JButton mainMenu = new JButton("Main Menu");
+    JButton empInfo = new JButton("Employee Info");
+    JButton tableInfo = new JButton("Table Info");
 
     
 
@@ -116,6 +118,10 @@ public class Tables{
         //bottomToolbar.setPreferredSize(new Dimension(300 , 50));
         mainMenu.setPreferredSize(new Dimension(300 , 50));
         bottomToolbar.add(mainMenu);
+        empInfo.setPreferredSize(new Dimension(250 , 25));
+        bottomToolbar.add(empInfo);
+        tableInfo.setPreferredSize(new Dimension(250 , 25));
+        bottomPanel.add(tableInfo);
 
         // Button Backend
         table1.addActionListener(new ActionListener() {
@@ -210,6 +216,21 @@ public class Tables{
           });
 
         mainMenu.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            frame.dispose();
+            new MainMenu();
+          }
+        });
+
+        empInfo.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            new EmpListGUI();
+          }
+        });
+
+        tableInfo.addActionListener(new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
             frame.dispose();

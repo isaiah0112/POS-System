@@ -59,7 +59,6 @@ public class ClockGUI
         backHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-                MainMenu back = new MainMenu();
                 clockWindow.dispose();
             }
         });
