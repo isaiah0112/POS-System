@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 import java.awt.Font.*;
 import java.awt.Color.*;
+import javax.swing.JLabel;
 
 public class MainMenu {
     JFrame frame = new JFrame();
@@ -14,19 +15,24 @@ public class MainMenu {
     static JLabel l;
     static JFrame f;
 
+
     public MainMenu() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("POS");
         frame.setLayout(new BorderLayout());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        frame.setSize(1000,800);
         frame.setVisible(true);
         
-  
+        
         center.add(test);
 
         frame.add(center);
+        JPanel p = new JPanel();
+
         l = new JLabel("Welcome!");
         b = new JButton("Waiter login");
+        
         b1 = new JButton("Manager Mode");
         b2 = new JButton("Time clock");
         b3 = new JButton("Register new User");
@@ -34,7 +40,7 @@ public class MainMenu {
         b5 = new JButton("Settings");
 
 
-        JPanel p = new JPanel();
+        //JPanel p = new JPanel();
         p.add(l);
         p.add(b);
         p.add(b1);
