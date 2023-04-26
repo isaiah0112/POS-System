@@ -40,10 +40,11 @@ public class MainMenu {
     JButton clear = new JButton("Clear");
     JButton go2 = new JButton("GO");
 
-    public MainMenu() {
 
+    public MainMenu() {
         l = new JLabel("Welcome!");
         b = new JButton("Waiter login");
+        
         b1 = new JButton("Manager Mode");
         b2 = new JButton("Time clock");
         b3 = new JButton("Register new User");
@@ -133,14 +134,12 @@ public class MainMenu {
         
   
         //f.show();
-        System.out.println();
+        //System.out.println();
 
         // ACTIN LISTENERS FOR BUTTONS ON MAIN MENU
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                frame.dispose();
                 ClockGUI gui = new ClockGUI();
             }
           });
@@ -150,6 +149,14 @@ public class MainMenu {
                 frame.setVisible(false);
                 frame.dispose();
                 Tables tables = new Tables();
+            }
+          });
+          b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                frame.dispose();
+                EmpListGUI list = new EmpListGUI();
             }
           });   
           
