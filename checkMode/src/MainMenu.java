@@ -39,10 +39,11 @@ public class MainMenu {
     JButton buttonDot = new JButton(".");
     JButton clear = new JButton("Clear");
 
-    public MainMenu() {
 
+    public MainMenu() {
         l = new JLabel("Welcome!");
         b = new JButton("Waiter login");
+        
         b1 = new JButton("Manager Mode");
         b2 = new JButton("Time clock");
         b3 = new JButton("Register new User");
