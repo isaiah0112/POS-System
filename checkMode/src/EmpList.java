@@ -11,7 +11,7 @@ public class EmpList
     {
         try {
             System.out.println(new File("emplist.txt").getAbsolutePath());
-            BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt"), 16*1024);
+            BufferedReader in = new BufferedReader(new FileReader("emplist.txt"), 16*1024);
             Scanner s = new Scanner(in);
             s.useDelimiter(",");
             while(s.hasNext())
