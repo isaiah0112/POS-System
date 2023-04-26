@@ -20,7 +20,7 @@ public class checkMode {
 
         
         // -----------------------    CREATE Each Button
-        File file = new File("D:/Git/POS-System/checkMode/src/menu.txt");
+        File file = new File("menu.txt");
         Scanner sc;
         try {
           sc = new Scanner(file);

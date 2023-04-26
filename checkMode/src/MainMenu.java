@@ -36,8 +36,9 @@ public class MainMenu {
     JButton button8 = new JButton("8");
     JButton button9 = new JButton("9");
     JButton button0 = new JButton("0");
-    JButton buttonDot = new JButton(".");
+    JButton buttonExit = new JButton("Exit");
     JButton clear = new JButton("Clear");
+    JButton go2 = new JButton("GO");
 
     public MainMenu() {
 
@@ -81,14 +82,22 @@ public class MainMenu {
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                security.setTitle("Store Front");
+
+                security.dispose();
+                northj.removeAll();
+                northj.revalidate();
+                northj.repaint();
+
+                
+        security.setTitle("Security - Manager Mode");
         security.setSize(300, 300); 
         security.setVisible(true);
         security.setLayout(new BorderLayout(0, 0));
-
-        security.add(northj, BorderLayout.NORTH);
-        security.add(centerj, BorderLayout.CENTER);
-
+        security.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
+        
+        northj.revalidate();
+        northj.repaint();
         northj.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); // set bottom gap to 20 pixels
         
 
@@ -111,7 +120,10 @@ public class MainMenu {
         centerj.add(button9);
         centerj.add(clear);
         centerj.add(button0);
-        centerj.add(buttonDot);
+        centerj.add(buttonExit);
+
+        security.add(northj, BorderLayout.NORTH);
+        security.add(centerj, BorderLayout.CENTER);
             }
         });
   
@@ -145,60 +157,110 @@ public class MainMenu {
           button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("1");
             }
         });
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("2");
             }
         });
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("3");
             }
         });
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("4");
             }
         });
         button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("5");
             }
         });
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("6");
             }
         });
         button7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("7");
             }
         });
         button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("8");
             }
         });
         button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("9");
             }
         });
         button0.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (managerCode.getText().equals("Invalid Code"))
+                {
+                    managerCode.setText("");  
+                }
                 managerCode.append("0");
             }
         });
@@ -208,19 +270,89 @@ public class MainMenu {
                 managerCode.setText("");
             }
         });
-        buttonDot.addActionListener(new ActionListener() {
+        buttonExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                managerCode.append(".");
+
+                security.dispose();
+                managerCode.setText("");
             }
         });
         go.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+                if (managerCode.getText().equals("258"))
+                {
+                    managerCode.setText("");
+                    security.dispose();
+                    managerMode manager = new managerMode();   
+                }
+                else
+                {
+                    managerCode.setText("Invalid Code");
+                }
+                
+            }
+        });
+        go2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if (managerCode.getText().equals("258"))
+                {
+                    security.dispose();
+                    managerCode.setText("");
+                    registerNewUser newUser = new registerNewUser();   
+                }
+                else
+                {
+                    managerCode.setText("Invalid Code");
+                }
+                
+            }
+        });
+
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 security.dispose();
-                //frame.dispose();
-                //FOR SECURITY ADD PASSABLE CODES/ID NUMBERS
-                managerMode manager = new managerMode();
+                northj.removeAll();
+                northj.revalidate();
+                northj.repaint();
+                security.setTitle("Security - Register New User");
+                security.setSize(300, 300); 
+                security.setVisible(true);
+                security.setLayout(new BorderLayout(0, 0));
+
+                
+                northj.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); // set bottom gap to 20 pixels
+                
+
+                northj.setLayout(new GridLayout(2, 1, 15, 10));
+
+                managerCode.setFont(new Font("Arial", Font.PLAIN, 35));
+                northj.add(managerCode);
+                //north.add(blank);
+                northj.add(go2);
+
+                centerj.setLayout(new GridLayout(4, 3, 0, 0));
+                centerj.add(button1);
+                centerj.add(button2);
+                centerj.add(button3);
+                centerj.add(button4);
+                centerj.add(button5);
+                centerj.add(button6);
+                centerj.add(button7);
+                centerj.add(button8);
+                centerj.add(button9);
+                centerj.add(clear);
+                centerj.add(button0);
+                centerj.add(buttonExit);
+
+
+                security.add(northj, BorderLayout.NORTH);
+                security.add(centerj, BorderLayout.CENTER);
             }
         });
     }
