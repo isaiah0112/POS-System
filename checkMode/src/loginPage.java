@@ -27,7 +27,7 @@ public class loginPage implements ActionListener{
 
         panel.setLayout(null);
 
-        waiterlabel = new JLabel("UserName"); 
+        waiterlabel = new JLabel("ID"); 
         waiterlabel.setBounds(10,20,80,25);
         panel.add(waiterlabel);
 
