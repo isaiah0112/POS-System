@@ -14,7 +14,7 @@ public class loginPage implements ActionListener{
         private static JButton button;
         private static JLabel success;
 
-     public static void main (String[] args ){
+     public loginPage (){
 
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();

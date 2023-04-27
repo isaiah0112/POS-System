@@ -102,12 +102,24 @@ public class MainMenu {
         northj.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); // set bottom gap to 20 pixels
         
 
+        security.setBackground(Color.lightGray);
         northj.setLayout(new GridLayout(2, 1, 15, 10));
 
         managerCode.setFont(new Font("Arial", Font.PLAIN, 35));
+        northj.setBackground(Color.lightGray);
+        centerj.setBackground(Color.lightGray);
         northj.add(managerCode);
         //north.add(blank);
         northj.add(go);
+
+        managerCode.setBackground(Color.lightGray);
+
+        buttonExit.setBackground(Color.RED);
+        buttonExit.setForeground(Color.WHITE);
+
+        clear.setBackground(Color.BLACK);
+        clear.setForeground(Color.WHITE);
+
 
         centerj.setLayout(new GridLayout(4, 3, 0, 0));
         centerj.add(button1);
@@ -328,11 +340,15 @@ public class MainMenu {
                 northj.revalidate();
                 northj.repaint();
                 security.setTitle("Security - Register New User");
+                security.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 security.setSize(300, 300); 
                 security.setVisible(true);
                 security.setLayout(new BorderLayout(0, 0));
 
-                
+                security.setBackground(Color.lightGray);
+                northj.setBackground(Color.lightGray);
+                centerj.setBackground(Color.lightGray);
+                managerCode.setBackground(Color.lightGray);
                 northj.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); // set bottom gap to 20 pixels
                 
 
@@ -342,6 +358,12 @@ public class MainMenu {
                 northj.add(managerCode);
                 //north.add(blank);
                 northj.add(go2);
+
+                buttonExit.setBackground(Color.RED);
+                buttonExit.setForeground(Color.WHITE);
+
+                clear.setBackground(Color.BLACK);
+                clear.setForeground(Color.WHITE);
 
                 centerj.setLayout(new GridLayout(4, 3, 0, 0));
                 centerj.add(button1);
