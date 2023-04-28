@@ -61,14 +61,14 @@ public class loginPage implements ActionListener{
         String password = passwordText.getText();
         //System.out.println(user + "," + password); In case you need the login in informating printed to terminal 
 
-        if(user.equals("Rodrigo") && password.equals("3993rh21") ){
+        if(user.getText().equals("Rodrigo") && password.equals("3993rh21") ){
             success.setText("Login successful!");
         }
-        if(user.equals("Tendai") && password.equals("3993th21") ){
+        if(user.getText().equals("Tendai") && password.equals("3993th21") ){
             success.setText("Login successful!");
         }
-        //else{
-            //success.setText("Wrong login!"); // tried to add error message but would not start over 
-        //}                                    // after bad login
+        else{
+            success.setText("Wrong login!"); // tried to add error message but would not start over 
+        }                                    // after bad login
     }
 }
