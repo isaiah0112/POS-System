@@ -149,6 +149,13 @@ public class MainMenu {
         //System.out.println();
 
         // ACTIN LISTENERS FOR BUTTONS ON MAIN MENU
+
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginPage login = new loginPage();
+            }
+        });
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -162,15 +169,7 @@ public class MainMenu {
                 frame.dispose();
                 Tables tables = new Tables();
             }
-          });
-          b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                frame.dispose();
-                EmpListGUI list = new EmpListGUI();
-            }
-          });   
+          }); 
           
           // ACTION LISTENERS FOR BUTTONS SECURITY MANAGER MODE
           button1.addActionListener(new ActionListener() {
