@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.io.ObjectStreamException;
 // import java.text.SimpleDateFormat;
 // import java.util.Calendar;
 
@@ -16,7 +18,7 @@ public class MainMenu {
     JPanel north = new JPanel();
     JPanel center = new JPanel();
     JTextArea test = new JTextArea();
-    JButton b, b1, b2,b3,b4,b5;
+    JButton b, b1, b2,b3,b4,b5,logout;
     static JLabel l;
     static JFrame f;
     JPanel p = new JPanel();
@@ -50,6 +52,8 @@ public class MainMenu {
         b3 = new JButton("Register new User");
         b4 = new JButton("Store Front");
         b5 = new JButton("Settings");
+        logout = new JButton("Log Out");
+        
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("POS");
@@ -75,6 +79,7 @@ public class MainMenu {
         p.add(b3);
         p.add(b4);
         p.add(b5);
+        p.add(logout);
 
         
 
@@ -137,6 +142,21 @@ public class MainMenu {
         //System.out.println();
 
         // ACTIN LISTENERS FOR BUTTONS ON MAIN MENU
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    frame.dispose();
+                    PrintWriter kill = new PrintWriter("current.txt");
+                    kill.print("");
+                    kill.close();
+                    loginPage login = new loginPage();
+                } catch (Exception k) {
+                    // TODO: handle exception
+                }
+                
+            }
+          });
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,6 +179,7 @@ public class MainMenu {
                 EmpListGUI list = new EmpListGUI();
             }
           });   
+          
           
           // ACTION LISTENERS FOR BUTTONS SECURITY MANAGER MODE
           button1.addActionListener(new ActionListener() {

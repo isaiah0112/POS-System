@@ -1,4 +1,5 @@
-200,Long John Silvers,30,45,0,
-201,Pizza Hut,24,9,0,
-202,Little Ceasars,13,2,0,
+200,Long John Silvers,30.0,45,0,
+201,Pizza Hut,24.0,9,0,
+202,Little Ceasars,13.0,2,0,
 203,Papa Johns,4.7,4,1,
+205,Rodrigo,41.0,67,0,

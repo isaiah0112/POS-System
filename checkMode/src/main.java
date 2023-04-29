@@ -2,7 +2,7 @@
 public class main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        MainMenu mainMenu = new MainMenu();
+        loginPage login = new loginPage();
         
     }
 }
