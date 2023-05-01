@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.LineBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -30,15 +31,22 @@ public class ClockGUI
         System.out.println("In clockgui");
         clockIn.setPreferredSize(new Dimension(200, 250));
         itemPanel.setLayout(new GridBagLayout());
-
+        itemPanel.setBackground(Color.LIGHT_GRAY);
         timeIn.setPreferredSize(new Dimension(107, 62));
         timeOut.setPreferredSize(new Dimension(107, 62));
         inTime.setPreferredSize(new Dimension(107, 62));
         outTime.setPreferredSize(new Dimension(107, 62));
-        
+        clockIn.setBackground(Color.GRAY);
+        clockIn.setBorder(new LineBorder(Color.BLACK));
+        clockIn.setForeground(Color.white);
+        clockIn.setFocusPainted(false);
+        backHome.setBackground(Color.GRAY);
+        backHome.setBorder(new LineBorder(Color.BLACK));
+        backHome.setForeground(Color.white);
+        backHome.setFocusPainted(false);
         timeLabel.setPreferredSize(new Dimension(430, 250));
         timeLabel.setFont(new Font("Verdana", Font.PLAIN, 60));
-        clockIn.setFont(new Font("Verdana", Font.PLAIN, 35));
+        clockIn.setFont(new Font("Verdana", Font.BOLD, 35));
 
         clockIn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
@@ -59,7 +67,7 @@ public class ClockGUI
                         Date two = format.parse(outTime.getText());
                         double difference = two.getTime()-one.getTime();
                         difference = difference/60000;
-                        updateClocked(new CurrentUser().current, 60.0);
+                        updateClocked(new CurrentUser().current, difference);
                         totalTime.setText("Total Time Clocked: " + getDiff(inTime.getText(), outTime.getText()));
                     } catch (Exception p) {
                         System.out.println("clock out error");

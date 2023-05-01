@@ -5,6 +5,7 @@ class Employee
     int totalSales = 0;
     double weeklyHours = 0;
     int currentTable = 0;
+    String password = "password";
     public Employee(int i,String emp, int sales, double hours, int table)
     {
         id = i;

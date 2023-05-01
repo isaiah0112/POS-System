@@ -39,8 +39,8 @@ public class EmpList
     {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("emplist.txt",true));
-            bw.newLine();
-            bw.write(emp.id +","+emp.name+","+emp.weeklyHours+","+emp.totalSales+","+emp.currentTable+",");
+            //bw.newLine();
+            bw.write(emp.id +","+emp.name+","+emp.weeklyHours+","+emp.totalSales+","+emp.currentTable+","+System.lineSeparator());
             bw.close();
             list.put(String.valueOf(emp.id),emp);
 
@@ -85,7 +85,7 @@ public class EmpList
     {
         try {
             System.out.println(new File("emplist.txt").getAbsolutePath());
-            BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt"), 16*1024);
+            BufferedReader in = new BufferedReader(new FileReader("emplist.txt"), 16*1024);
             Scanner s = new Scanner(in);
             s.useDelimiter(",");
             while(s.hasNext())
