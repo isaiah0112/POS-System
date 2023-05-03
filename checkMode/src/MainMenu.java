@@ -14,10 +14,12 @@ import java.io.*;
 import java.io.ObjectStreamException;
 // import java.text.SimpleDateFormat;
 // import java.util.Calendar;
+import java.time.Clock;
 
 public class MainMenu {
     JFrame frame = new JFrame();
     JPanel north = new JPanel();
+    int counter = 0;
     //JPanel center = new JPanel();
     JTextArea test = new JTextArea();
     JButton b, b1, b2,b3,b4,b5,logout;
@@ -256,6 +258,8 @@ public class MainMenu {
                     kill.print("");
                     kill.close();
                     loginPage login = new loginPage();
+
+                    counter = 0;
                 } catch (Exception k) {
                     // TODO: handle exception
                 }
@@ -265,7 +269,19 @@ public class MainMenu {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClockGUI gui = new ClockGUI();
+
+                if (counter == 0)
+                {
+                    ClockGUI gui = new ClockGUI();
+                    System.out.println("Counter: " + counter);
+                    counter++;
+                }
+                else{
+                    ClockGUI.clockWindow.setVisible(true);
+                    System.out.println("Counter: " + counter);
+                    counter++;
+                }
+                
             }
           });
         b4.addActionListener(new ActionListener() {

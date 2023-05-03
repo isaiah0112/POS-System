@@ -580,6 +580,7 @@ public class checkMode {
                     logic.partialPayFalse();
                     partialPay = false;
                     frame.dispose();
+
                   }
                   else {
                     

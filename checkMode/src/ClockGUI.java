@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,19 +14,20 @@ import java.util.Date;
 
 public class ClockGUI 
 {
-    JFrame clockWindow = new JFrame();
+    static JFrame clockWindow = new JFrame();
     JPanel itemPanel = new JPanel();
     JButton clockIn =  new JButton("Clock In");
     JButton clockOut = new JButton("Clock Out");
     JLabel timeIn = new JLabel("Time clocked in: ");
     JLabel timeOut = new JLabel("Time clocked out: ");
-    JLabel inTime = new JLabel("");
     JLabel outTime = new JLabel("");
     Time clock = new Time();
+    JLabel inTime = new JLabel("");
     JLabel timeLabel = new JLabel();
     JButton backHome = new JButton("Back");
     JLabel currentUser = new JLabel();
     JLabel totalTime = new JLabel();
+    int counter = 0;
     public ClockGUI()
     {
         System.out.println("In clockgui");
@@ -42,6 +44,7 @@ public class ClockGUI
         clockIn.setFocusPainted(false);
         backHome.setBackground(Color.GRAY);
         backHome.setBorder(new LineBorder(Color.BLACK));
+        clockWindow.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         backHome.setForeground(Color.white);
         backHome.setFocusPainted(false);
         timeLabel.setPreferredSize(new Dimension(430, 250));
@@ -51,14 +54,17 @@ public class ClockGUI
         clockIn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-                if(clockIn.getText() == "Clock In")
-                {
+                if(clockIn.getText() == "Clock In" && counter == 0)
+                {   outTime.setText("");
+                    currentUser.setText(new CurrentUser().current);
                     clockIn.setText("Clock Out");
                     inTime.setText(clock.currentTime());
+                    counter++;
                 }
-                else if(clockIn.getText() == "Clock Out")
+                else if(clockIn.getText() == "Clock Out" && counter == 1)
                 {
 
+                    currentUser.setText(new CurrentUser().current);
                     clockIn.setText("Clock In");
                     outTime.setText(clock.currentTime());
                     try {
@@ -66,13 +72,16 @@ public class ClockGUI
                         Date one = format.parse(inTime.getText());
                         Date two = format.parse(outTime.getText());
                         double difference = two.getTime()-one.getTime();
+                        
                         difference = difference/60000;
                         updateClocked(new CurrentUser().current, difference);
                         totalTime.setText("Total Time Clocked: " + getDiff(inTime.getText(), outTime.getText()));
                     } catch (Exception p) {
                         System.out.println("clock out error");
                     }
-        
+                    counter = 0;
+                    inTime.setText("");
+                    outTime.setText("");
                 }
                     
                 
@@ -82,7 +91,11 @@ public class ClockGUI
         backHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
+                clockWindow.setVisible(false);
                 clockWindow.dispose();
+                clockWindow.revalidate();
+                clockWindow.repaint();
+                
             }
         });
    
@@ -180,7 +193,7 @@ public class ClockGUI
             Date two = format.parse(time2);
             
             double difference = two.getTime()-one.getTime();
-            System.out.println(difference);
+            //System.out.println(difference + " This is difference");
             int seconds = (int) (difference / 1000) % 60 ;
             int minutes = (int) ((difference / (1000*60)) % 60);
             int hours   = (int) ((difference / (1000*60*60)) % 24);
@@ -199,10 +212,12 @@ public class ClockGUI
         double add = diff/60;
         EmpList list = new EmpList();
         Employee updater = list.getEmployee(emp);
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(4);
         String oldString = updater.id + "," + updater.name + "," + updater.weeklyHours + "," + updater.totalSales + "," + updater.currentTable + "," + System.lineSeparator();
         String oldContent = "";
-        String newString = updater.id + "," + updater.name + "," + (updater.weeklyHours + add) + "," + updater.totalSales + "," + updater.currentTable + "," + System.lineSeparator();
-        System.out.println("Old: " + updater.weeklyHours + " New: " + (updater.weeklyHours + add));
+        String newString = updater.id + "," + updater.name + "," + df.format((updater.weeklyHours + add)) + "," + updater.totalSales + "," + updater.currentTable + "," + System.lineSeparator();
+        System.out.println("Old: " + updater.weeklyHours + " New: " + df.format((updater.weeklyHours + add)));
         try{
             BufferedReader read = new BufferedReader(new FileReader("emplist.txt"));
             String line = read.readLine();
@@ -213,7 +228,7 @@ public class ClockGUI
                 oldContent = oldContent + line + System.lineSeparator();
                 line = read.readLine();
             }
-            System.out.println(count);
+            //System.out.println(count + "This is count");
             String newContent = oldContent.replaceAll(oldString, newString);
             FileWriter writer = new FileWriter("emplist.txt");
             writer.write(newContent);
