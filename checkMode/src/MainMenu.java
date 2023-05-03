@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -8,16 +10,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.io.ObjectStreamException;
 // import java.text.SimpleDateFormat;
 // import java.util.Calendar;
 
 public class MainMenu {
     JFrame frame = new JFrame();
     JPanel north = new JPanel();
-    JPanel center = new JPanel();
+    //JPanel center = new JPanel();
     JTextArea test = new JTextArea();
-    JButton b, b1, b2,b3,b4,b5;
-    static JLabel l;
+    JButton b, b1, b2,b3,b4,b5,logout;
+    static JLabel welcomeLabel;
     static JFrame f;
     JPanel p = new JPanel();
     JFrame security = new JFrame();
@@ -42,41 +46,135 @@ public class MainMenu {
 
 
     public MainMenu() {
-        l = new JLabel("Welcome!");
+        welcomeLabel = new JLabel("Welcome!");
         b = new JButton("Waiter login");
-        
-        b1 = new JButton("Manager Mode");
-        b2 = new JButton("Time clock");
-        b3 = new JButton("Register new User");
-        b4 = new JButton("Store Front");
-        b5 = new JButton("Settings");
 
+        b1 = new JButton("Manager Mode");
+        b1.setBackground(Color.GRAY);
+        b1.setBorder(new LineBorder(Color.BLACK));
+        b1.setForeground(Color.white);
+        b1.setFocusPainted(false);
+        b1.setFont(new Font("Verdana", Font.BOLD, 20));
+        b2 = new JButton("Time clock");
+        b2.setBackground(Color.GRAY);
+        b2.setBorder(new LineBorder(Color.BLACK));
+        b2.setForeground(Color.white);
+        b2.setFocusPainted(false);
+        b2.setFont(new Font("Verdana", Font.BOLD, 20));
+        b3 = new JButton("Register new User");
+        b3.setBackground(Color.GRAY);
+        b3.setBorder(new LineBorder(Color.BLACK));
+        b3.setForeground(Color.white);
+        b3.setFocusPainted(false);
+        b3.setFont(new Font("Verdana", Font.BOLD, 20));
+        b4 = new JButton("Store Front");
+        b4.setBackground(Color.GRAY);
+        b4.setBorder(new LineBorder(Color.BLACK));
+        b4.setForeground(Color.white);
+        b4.setFocusPainted(false);
+        b4.setFont(new Font("Verdana", Font.BOLD, 20));
+        b5 = new JButton("Settings");
+        b5.setBackground(Color.GRAY);
+        b5.setBorder(new LineBorder(Color.BLACK));
+        b5.setForeground(Color.white);
+        b5.setFocusPainted(false);
+        b5.setFont(new Font("Verdana", Font.BOLD, 20));
+        logout = new JButton("Log Out");
+        logout.setBackground(Color.GRAY);
+        logout.setBorder(new LineBorder(Color.BLACK));
+        logout.setForeground(Color.white);
+        logout.setFocusPainted(false);
+        logout.setFont(new Font("Verdana", Font.BOLD, 20));
+        
+        b1.setPreferredSize(new Dimension(250, 200));
+        b2.setPreferredSize(new Dimension(250, 200));
+        b3.setPreferredSize(new Dimension(250, 200));
+        b4.setPreferredSize(new Dimension(250, 200));
+        b5.setPreferredSize(new Dimension(250, 200));
+        logout.setPreferredSize(new Dimension(250, 200));
+
+        /*
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("POS");
         frame.setLayout(new BorderLayout());
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        frame.pack();
+        frame.getContentPane().setBackground(Color.BLUE);
         frame.setVisible(true);
-        frame.add(center);
-        
+         */
+        //frame.add(center);
+        p.setLayout(new GridBagLayout());
+        //p.setPreferredSize(new Dimension(500, 500));
+        p.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
         // Adding panel to frame
-        frame.add(p);
+        welcomeLabel.setPreferredSize(new Dimension(450, 250));
+        welcomeLabel.setFont(new Font("Verdana", Font.PLAIN, 45));
+        welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
+        welcomeLabel.setForeground(Color.WHITE);
+        
+        
+        
 
-        center.add(test);
+        //center.add(test);
 
         
         
-
-
-        
-        p.add(l);
-        p.add(b);
-        p.add(b1);
-        p.add(b2);
-        p.add(b3);
-        p.add(b4);
-        p.add(b5);
+        GridBagConstraints sett = new GridBagConstraints();
 
         
+        sett = new GridBagConstraints();
+        sett.gridx = 0;
+        sett.gridy = 3;
+        //sett.weightx = 1.0;
+        sett.gridwidth = 1;
+        sett.fill = GridBagConstraints.BOTH;
+        p.add(b1, sett);
+        sett = new GridBagConstraints();
+        sett.gridx = 1;
+        sett.gridy = 3;
+        //sett.weightx = 1.0;
+        sett.gridwidth = 1;
+        sett.fill = GridBagConstraints.BOTH;
+        p.add(b2, sett);
+        sett = new GridBagConstraints();
+        sett.gridx = 2;
+        sett.gridy = 3;
+        //sett.weightx = 1.0;
+        sett.gridwidth = 1;
+        sett.fill = GridBagConstraints.BOTH;
+        p.add(b3, sett);
+        sett = new GridBagConstraints();
+        sett.gridx = 0;
+        sett.gridy = 4;
+        //sett.weightx = 1.0;
+        sett.gridwidth = 1;
+        sett.fill = GridBagConstraints.BOTH;
+        p.add(b4, sett);
+        sett = new GridBagConstraints();
+        sett.gridx = 1;
+        sett.gridy = 4;
+        //sett.weightx = 1.0;
+        sett.gridwidth = 1;
+        sett.fill = GridBagConstraints.BOTH;
+        p.add(b5, sett);
+        sett = new GridBagConstraints();
+        sett.gridx = 2;
+        sett.gridy = 4;
+        //sett.weightx = 1.0;
+        sett.gridwidth = 1;
+        sett.fill = GridBagConstraints.BOTH;
+        p.add(logout, sett);
+        p.setBackground(Color.LIGHT_GRAY);
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("POS");
+        frame.setLayout(new BorderLayout());
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        frame.add(welcomeLabel, BorderLayout.NORTH);
+        frame.getContentPane().add(p,BorderLayout.CENTER);
+        frame.pack();
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
+        frame.setVisible(true);
 
         // security for manager mode
 
@@ -149,6 +247,21 @@ public class MainMenu {
         //System.out.println();
 
         // ACTIN LISTENERS FOR BUTTONS ON MAIN MENU
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    frame.dispose();
+                    PrintWriter kill = new PrintWriter("current.txt");
+                    kill.print("");
+                    kill.close();
+                    loginPage login = new loginPage();
+                } catch (Exception k) {
+                    // TODO: handle exception
+                }
+                
+            }
+          });
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -171,6 +284,7 @@ public class MainMenu {
                 EmpListGUI list = new EmpListGUI();
             }
           });   
+          
           
           // ACTION LISTENERS FOR BUTTONS SECURITY MANAGER MODE
           button1.addActionListener(new ActionListener() {

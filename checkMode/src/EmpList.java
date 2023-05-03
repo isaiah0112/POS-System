@@ -10,10 +10,12 @@ public class EmpList
     public EmpList()
     {
         try {
-            System.out.println(new File("emplist.txt").getAbsolutePath());
+            
+            System.out.println("in emplist");
             BufferedReader in = new BufferedReader(new FileReader("emplist.txt"), 16*1024);
             Scanner s = new Scanner(in);
             s.useDelimiter(",");
+            System.out.println("getting lines");
             while(s.hasNext())
             {
                 id = s.nextInt();
@@ -29,17 +31,18 @@ public class EmpList
             s.close();
             System.out.println("done");
         } catch (Exception e){
-            System.err.println("Error: " + e.getMessage());
+            System.err.println("emplist Error: " + e.getMessage());
         }
         
     }
     public void addEmployee(Employee emp)
     {
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt",true));
-            bw.newLine();
-            bw.write(emp.id +","+emp.name+","+emp.weeklyHours+","+emp.totalSales+","+emp.currentTable+",");
+            BufferedWriter bw = new BufferedWriter(new FileWriter("emplist.txt",true));
+            //bw.newLine();
+            bw.write(emp.id +","+emp.name+","+emp.weeklyHours+","+emp.totalSales+","+emp.currentTable+","+System.lineSeparator());
             bw.close();
+            list.put(String.valueOf(emp.id),emp);
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -47,21 +50,25 @@ public class EmpList
     }
     public Employee getEmployee(String emp)
     {
+        System.out.println("Get Emp: " + emp);
         try {
-            System.out.println(new File("emplist.txt").getAbsolutePath());
-            BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt"), 16*1024);
+            //System.out.println(new File("emplist.txt").getAbsolutePath());
+            BufferedReader in = new BufferedReader(new FileReader("emplist.txt"), 16*1024);
             Scanner s = new Scanner(in);
             s.useDelimiter(",");
             while(s.hasNext())
             {
                 id = s.nextInt();
                 n = s.next();
+                System.out.println(n);
                 hours = s.nextDouble();
                 sales = s.nextInt();
                 table = s.nextInt();
-                if(n == emp)
+                System.out.println("File: "  + n.length() + "Emp: " + emp.length());
+                if(n.equals(emp))
                 {
                     Employee person = new Employee(id,n, sales, hours, table);
+                    System.out.println(id + n + sales + hours + table);
                     return person;
                 }
                 s.nextLine();
@@ -69,7 +76,7 @@ public class EmpList
             s.close();
             System.out.println("done");
         } catch (Exception e){
-            System.err.println("Error: " + e.getMessage());
+            System.err.println("getemp Error: " + e.getMessage());
         }
         Employee not = new Employee(0, "Employee does not exist", 0, 0, 0);
         return not;
@@ -78,7 +85,7 @@ public class EmpList
     {
         try {
             System.out.println(new File("emplist.txt").getAbsolutePath());
-            BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\isaia\\OneDrive\\Documents\\GitHub\\POS-System\\emplist.txt"), 16*1024);
+            BufferedReader in = new BufferedReader(new FileReader("emplist.txt"), 16*1024);
             Scanner s = new Scanner(in);
             s.useDelimiter(",");
             while(s.hasNext())
@@ -97,7 +104,7 @@ public class EmpList
             s.close();
             System.out.println("done");
         } catch (Exception e){
-            System.err.println("Error: " + e.getMessage());
+            System.err.println("emp exists Error: " + e.getMessage());
         }
         Employee not = new Employee(0, "Employee does not exist", 0, 0, 0);
         return false;
