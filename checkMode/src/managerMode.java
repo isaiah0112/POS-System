@@ -83,7 +83,6 @@ public class managerMode {
         
         foodPrice.setFont(customFont);
         foodPrice.setBackground(Color.GRAY);;
-        foodPrice.setText(String.valueOf("$" + itemPrice[foodName.getSelectedIndex()]));
         foodName.setFont(customFont);
         foodName.setBackground(Color.lightGray);
         foodBox.setFont(customFont);
@@ -166,31 +165,31 @@ public class managerMode {
                 deleteEmployee("emplist.txt", employeeBox.getSelectedItem().toString());
                 employeeBox.removeItemAt(employeeBox.getSelectedIndex());
 
-                try {
-                    File inputFile = new File("emplist.txt");
-                    File tempFile = new File("temp.txt");
+            //     try {
+            //         File inputFile = new File("emplist.txt");
+            //         File tempFile = new File("temp.txt");
         
-                    BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+            //         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            //         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
         
-                    String currentLine;
+            //         String currentLine;
         
-                    while ((currentLine = reader.readLine()) != null) {
-                        if (currentLine.trim().isEmpty()) {
-                            continue;  // Skip empty line
-                        }
-                        writer.write(currentLine + System.getProperty("line.separator"));
-                    }
+            //         while ((currentLine = reader.readLine()) != null) {
+            //             if (currentLine.trim().isEmpty()) {
+            //                 continue;  // Skip empty line
+            //             }
+            //             writer.write(currentLine + System.getProperty("line.separator"));
+            //         }
         
-                    writer.close();
-                    reader.close();
+            //         writer.close();
+            //         reader.close();
         
-                    // Replace the input file with the temporary file
-                    inputFile.delete();
-                    tempFile.renameTo(inputFile);
-                } catch (IOException k) {
-                    k.printStackTrace();
-                }
+            //         // Replace the input file with the temporary file
+            //         inputFile.delete();
+            //         tempFile.renameTo(inputFile);
+            //     } catch (IOException k) {
+            //         k.printStackTrace();
+            //     }
             }
         });
 
@@ -302,13 +301,13 @@ public class managerMode {
         try {
             File inputFile = new File(filePath);
             File tempFile = new File("temp.txt");
-
+    
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
+    
             String lineToRemove = employeeName;
             String currentLine;
-
+    
             while ((currentLine = reader.readLine()) != null) {
                 // Check if the current line contains the employee name
                 if (currentLine.contains(lineToRemove)) {
@@ -316,13 +315,18 @@ public class managerMode {
                 }
                 writer.write(currentLine + System.getProperty("line.separator"));
             }
-
-            writer.close();
+    
+            writer.close(); // Close the writer before renaming the file
             reader.close();
-
+    
             // Replace the input file with the temporary file
-            inputFile.delete();
-            tempFile.renameTo(inputFile);
+            if (!inputFile.delete()) {
+                System.out.println("Failed to delete the original file");
+                return;
+            }
+            if (!tempFile.renameTo(inputFile)) {
+                System.out.println("Failed to rename the temp file");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

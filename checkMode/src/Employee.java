@@ -14,17 +14,23 @@ class Employee
         weeklyHours = hours;
         currentTable = table;
     }
-    public void updateSales(int sales)
+    public int updateSales(int sales)
     {
         this.totalSales = totalSales + sales;
+
+        return this.totalSales;
     }
-    public void updateHours(double hours)
+    public double updateHours(double hours)
     {
         this.weeklyHours = weeklyHours + hours;
+        
+        return this.weeklyHours;
     }
-    public void setTable(int table)
+    public int setTable(int table)
     {
         this.currentTable = table;
+
+        return this.currentTable;
     }
     public String getInfo()
     {

@@ -257,6 +257,7 @@ public class checkMode {
               check.append(itemName[15] + " - " + itemPrice[15] + "\n");
               total = logic.add(itemPrice[15], total);
               System.out.println("Total is " + String.format("%.2f", total));
+              getItem(1);
             }
           });
           // ----------- milkshake Button Backend
@@ -677,5 +678,24 @@ public class checkMode {
         frame.add(checkPanel, BorderLayout.WEST);
         frame.add(bottomToolbar, BorderLayout.SOUTH);
 
+    }
+
+    public static String getItem (int index)
+    {
+      String[] itemName = new String[20];
+      File file = new File("menu.txt");
+        Scanner sc;
+        try {
+          sc = new Scanner(file);
+          for (int i = 0; i < 20; i++) {
+            itemName[i] = sc.nextLine();
+            System.out.println(itemName[i] + " SHIOT ");
+          }
+             
+        } catch (FileNotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      return itemName[index];
     }
 }

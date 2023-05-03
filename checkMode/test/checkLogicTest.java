@@ -2,9 +2,11 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class checkLogicTest {
     checkLogic logic = new checkLogic();
+    managerMode manager = new managerMode();
 
     @Test
     @DisplayName("Addition on Check")
@@ -26,4 +28,5 @@ public class checkLogicTest {
         boolean ans = logic.partialPayFalse();
         Assertions.assertTrue(ans == false);
     }
+
 }

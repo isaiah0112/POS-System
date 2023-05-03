@@ -181,7 +181,7 @@ public class registerNewUser {
     public static void appendLineToFile(String filePath, int id, String name, double sales, int hours, int tables) {
         try {
             FileWriter writer = new FileWriter(filePath, true);
-            writer.write(id + "," + name + "," + sales + "," + hours + "," + tables + ",");
+            writer.write(id + "," + name + "," + sales + "," + hours + "," + tables + "," +  "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

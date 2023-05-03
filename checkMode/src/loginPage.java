@@ -104,4 +104,10 @@ class loginPage implements ActionListener{
         frame.getContentPane().add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
      }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+    }
 }
