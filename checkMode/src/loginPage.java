@@ -1,36 +1,36 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+
 import java.awt.Font.*;
 import java.awt.Color.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionListener;
+import java.io.*;
+import java.io.ObjectStreamException;
+import java.util.*;
 
-public class loginPage{
+class loginPage implements ActionListener{
 
         private static JLabel waiterlabel;
         JTextField waiterText;
         private static JLabel passwordLabel ;
-        JPasswordField passwordText;
-        JButton button = new JButton("Login");
+        private static JPasswordField passwordText;
+        JButton button;
         private static JLabel success;
+        JLabel login = new JLabel("LOGIN");
 
-     public loginPage (){
+     public loginPage(){
 
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
-        frame.setLayout(new BorderLayout());
-        // frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        frame.setSize(350, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        frame.add(panel);
-
-        panel.setLayout(null);
+        login.setPreferredSize(new Dimension(450, 250));
+        login.setFont(new Font("Verdana", Font.PLAIN, 45));
+        login.setHorizontalAlignment(JLabel.CENTER);
+        login.setForeground(Color.WHITE);
+        panel.setLayout(new BorderLayout());
 
         waiterlabel = new JLabel("ID"); 
         waiterlabel.setBounds(10,20,80,25);
@@ -47,41 +47,61 @@ public class loginPage{
         passwordText = new JPasswordField(); // creating password input
         passwordText.setBounds(100, 50, 165,25);
         panel.add(passwordText);
+        
 
+        button = new JButton("Login");//creating login in button 
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String user = waiterText.getText();
+                String password = passwordText.getText();
+                //System.out.println(user + "," + password); In case you need the login in informating printed to terminal 
+                EmpList list = new EmpList();
+                Map<String,Employee> emps= list.getMap();
+                for(Map.Entry<String,Employee> entry : emps.entrySet())
+                {
+                    Employee temp = entry.getValue();
+                    System.out.println(temp.name + " " + temp.password);
+                    if(user.equals(temp.name) && password.equals(temp.password) ){
+                        success.setText("Login successful!");
+                        System.out.println("success");
+                        try {
+                            BufferedWriter bw = new BufferedWriter(new FileWriter("current.txt",true));
+                            bw.write(user);
+                            bw.close();
+                
+                        } catch (Exception k) {
+                            // TODO: handle exception
+                        }
+                        MainMenu menu = new MainMenu();
+                        frame.dispose();
+                        break;
+                    }
+                }
+                
+            }
+        });
         button.setBounds(10,80,80,25);
+        button.setBackground(Color.GRAY);
+        button.setBorder(new LineBorder(Color.BLACK));
+        button.setForeground(Color.white);
+        button.setFocusPainted(false);
+        //button.addActionListener(new loginPage() );
         panel.add(button);
 
         success = new JLabel("");// creating text for correct input
         success.setBounds(10,110,300,25);
         panel.add(success);
         //success.setText
-        
+        frame.setLayout(new BorderLayout());
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        frame.setSize(350, 200);
+        frame.getContentPane().add(login, BorderLayout.NORTH);
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
+        panel.setBackground(Color.LIGHT_GRAY);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
-
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String user = waiterText.getText();
-                char[] passwordChars = passwordText.getPassword();
-                String password = new String(passwordChars);
-                System.out.println(user + "," + password);
-        
-                if(user.equals("Rodrigo") && password.equals("3993rh21") ){
-                    success.setText("Login successful!");
-                }
-                else if(user.equals("Tendai") && password.equals("3993th21") ){
-                    success.setText("Login successful!");
-                }
-                else{
-                    success.setText("Wrong login!"); // tried to add error message but would not start over 
-                } 
-            }
-        });
-
      }
-     
-    
 }
-
-
-                

@@ -75,7 +75,10 @@ public class registerNewUser {
                 if (enterName.getText().length() != 0)
                 {
 
-                    appendLineToFile("emplist.txt", grabNewID, enterName.getText(), 0, 0, 0);
+                    Employee temp = new Employee(grabNewID, enterName.getText(), 0, 0, 0);
+                    EmpList add = new EmpList();
+                    add.addEmployee(temp);
+                    //appendLineToFile("emplist.txt", grabNewID, enterName.getText(), 0, 0, 0);
                     frame.dispose();
 
                     try {
@@ -114,8 +117,6 @@ public class registerNewUser {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     if (enterName.getText().length() != 0)
                 {
-
-                    
                     appendLineToFile("emplist.txt", grabNewID, enterName.getText(), 0, 0, 0);
                     frame.dispose();
 
@@ -180,7 +181,7 @@ public class registerNewUser {
     public static void appendLineToFile(String filePath, int id, String name, double sales, int hours, int tables) {
         try {
             FileWriter writer = new FileWriter(filePath, true);
-            writer.write("\n" + id + "," + name + "," + sales + "," + hours + "," + tables + ",");
+            writer.write(id + "," + name + "," + sales + "," + hours + "," + tables + ",");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
