@@ -6,7 +6,7 @@ import java.awt.Font.*;
 import java.awt.Color.*;
 import javax.swing.JLabel;
 
-public class MainMenu {
+public class MainMenu implements ActionListener {
     JFrame frame = new JFrame();
     JPanel north = new JPanel();
     JPanel center = new JPanel();
